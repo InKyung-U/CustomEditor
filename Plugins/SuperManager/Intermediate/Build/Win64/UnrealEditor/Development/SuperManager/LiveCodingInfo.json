@@ -1,0 +1,11 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.SuperManager.cpp.obj": [
+			"QuickAssetAction.gen.cpp.obj",
+			"SuperManager.init.gen.cpp.obj",
+			"QuickAssetAction.cpp.obj",
+			"SuperManager.cpp.obj"
+		]
+	}
+}

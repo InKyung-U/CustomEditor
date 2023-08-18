@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\private\\supermanager.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unreal_project\\extendeditor\\intermediate\\build\\win64\\extendeditoreditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\intermediate\\build\\win64\\unrealeditor\\development\\supermanager\\definitions.supermanager.h",
+            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\supermanager.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
