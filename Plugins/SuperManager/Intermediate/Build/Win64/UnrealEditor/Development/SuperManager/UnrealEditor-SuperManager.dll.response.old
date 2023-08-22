@@ -46,6 +46,7 @@
 "..\Intermediate\Build\Win64\UnrealEditor\Development\UMG\UnrealEditor-UMG.lib"
 "..\Plugins\FX\Niagara\Intermediate\Build\Win64\UnrealEditor\Development\Niagara\UnrealEditor-Niagara.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\UnrealEd\UnrealEditor-UnrealEd.lib"
+"..\Intermediate\Build\Win64\UnrealEditor\Development\AssetTools\UnrealEditor-AssetTools.lib"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"

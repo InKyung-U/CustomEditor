@@ -2,4 +2,3 @@
 #include "D:/Unreal_Project/ExtendEditor/Plugins/SuperManager/Intermediate/Build/Win64/UnrealEditor/Inc/SuperManager/UHT/QuickAssetAction.gen.cpp"
 #include "D:/Unreal_Project/ExtendEditor/Plugins/SuperManager/Intermediate/Build/Win64/UnrealEditor/Inc/SuperManager/UHT/SuperManager.init.gen.cpp"
 #include "D:/Unreal_Project/ExtendEditor/Plugins/SuperManager/Source/SuperManager/Private/AssetActions/QuickAssetAction.cpp"
-#include "D:/Unreal_Project/ExtendEditor/Plugins/SuperManager/Source/SuperManager/Private/SuperManager.cpp"

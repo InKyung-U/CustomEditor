@@ -3,10 +3,30 @@
     "Data": {
         "Source": "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\private\\supermanager.cpp",
         "ProvidedModule": "",
-        "PCH": "d:\\unreal_project\\extendeditor\\intermediate\\build\\win64\\extendeditoreditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "PCH": "d:\\unreal_project\\extendeditor\\intermediate\\build\\win64\\extendeditoreditor\\development\\unrealed\\sharedpch.unrealed.shadowerrors.h.pch",
         "Includes": [
             "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\intermediate\\build\\win64\\unrealeditor\\development\\supermanager\\definitions.supermanager.h",
-            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\supermanager.h"
+            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\supermanager.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowser\\public\\contentbrowsermodule.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowser\\public\\contentbrowserdelegates.h",
+            "d:\\ue_5.1\\engine\\source\\developer\\assettools\\public\\iassettypeactions.h",
+            "d:\\ue_5.1\\engine\\source\\developer\\merge\\public\\merge.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\classes\\thumbnailrendering\\thumbnailmanager.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\classes\\thumbnailrendering\\thumbnailrenderer.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\unrealed\\uht\\thumbnailrenderer.generated.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\unrealed\\uht\\thumbnailmanager.generated.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assettools\\uht\\iassettypeactions.generated.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowserdatalegacybridge.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowserdatamenucontexts.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowseritem.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowseritemdata.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowseritem.generated.h",
+            "d:\\ue_5.1\\engine\\source\\developer\\collectionmanager\\public\\collectionmanagertypes.h",
+            "d:\\ue_5.1\\engine\\source\\developer\\sourcecontrol\\public\\isourcecontrolstate.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatamenucontexts.generated.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatalegacybridge.generated.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrufavoriteslist.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrulist.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

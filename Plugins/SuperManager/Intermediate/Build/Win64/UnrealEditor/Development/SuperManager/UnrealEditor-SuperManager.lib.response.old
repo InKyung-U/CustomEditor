@@ -6,7 +6,7 @@
 /NAME:"UnrealEditor-SuperManager.dll"
 /IGNORE:4221
 /NODEFAULTLIB
-"D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.obj"
 "D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Module.SuperManager.cpp.obj"
 "D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Default.rc2.res"
 /OUT:"D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\UnrealEditor-SuperManager.lib"

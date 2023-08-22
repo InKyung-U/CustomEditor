@@ -1,5 +1,6 @@
 D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Source\SuperManager\Private\SuperManager.cpp
 /I .
+/I Editor\Blutility\Private
 /I D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Source\SuperManager\Private
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\CoreUObject\UHT
 /I Runtime
@@ -270,8 +271,29 @@ D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Source\SuperManager\Private\
 /I Runtime\MovieSceneCapture\Public
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\AnimationDataController\UHT
 /I Developer\AnimationDataController\Public
+/I D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Inc\SuperManager\UHT
 /I D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Source
 /I D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Source\SuperManager\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\Blutility\UHT
+/I Editor\Blutility\Classes
+/I Editor\Blutility\Public
+/I ..\Plugins\Editor\EditorScriptingUtilities\Intermediate\Build\Win64\UnrealEditor\Inc\EditorScriptingUtilities\UHT
+/I ..\Plugins\Editor\EditorScriptingUtilities\Source
+/I ..\Plugins\Editor\EditorScriptingUtilities\Source\EditorScriptingUtilities\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\StaticMeshEditor\UHT
+/I Editor\StaticMeshEditor\Public
+/I ..\Plugins\FX\Niagara\Intermediate\Build\Win64\UnrealEditor\Inc\Niagara\UHT
+/I ..\Plugins\FX\Niagara\Source
+/I ..\Plugins\FX\Niagara\Source\Niagara\Classes
+/I ..\Plugins\FX\Niagara\Source\Niagara\Public
+/I ..\Plugins\FX\Niagara\Intermediate\Build\Win64\UnrealEditor\Inc\NiagaraCore\UHT
+/I ..\Plugins\FX\Niagara\Source\NiagaraCore\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\VectorVM\UHT
+/I Runtime\VectorVM\Public
+/I ..\Plugins\FX\Niagara\Intermediate\Build\Win64\UnrealEditor\Inc\NiagaraShader\UHT
+/I ..\Plugins\FX\Niagara\Source\NiagaraShader\Public
+/I ..\Plugins\FX\Niagara\Source\NiagaraVertexFactories\Public
+/I Developer\DesktopPlatform\Public
 /external:W0
 /external:I ThirdParty\mimalloc\include
 /external:I ThirdParty\LibTiff\Source\Win64
@@ -281,10 +303,10 @@ D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Source\SuperManager\Private\
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\shared"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\um"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\winrt"
-/FI"D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/FI"D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h"
 /FI"D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Definitions.SuperManager.h"
-/Yu"D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+/Yu"D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h"
+/Fp"D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.pch"
 /Fo"D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\SuperManager.cpp.obj"
 /sourceDependencies D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\SuperManager.cpp.dep.json
 /Zc:inline
