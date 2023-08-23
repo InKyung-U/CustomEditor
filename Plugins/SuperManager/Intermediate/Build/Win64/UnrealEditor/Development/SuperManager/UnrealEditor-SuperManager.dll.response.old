@@ -35,6 +35,7 @@
 /FUNCTIONPADMIN:6
 "D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.obj"
 "D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Module.SuperManager.cpp.obj"
+"D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\SuperManager.cpp.obj"
 "D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Default.rc2.res"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\CoreUObject\UnrealEditor-CoreUObject.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\Engine\UnrealEditor-Engine.lib"
@@ -47,6 +48,7 @@
 "..\Plugins\FX\Niagara\Intermediate\Build\Win64\UnrealEditor\Development\Niagara\UnrealEditor-Niagara.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\UnrealEd\UnrealEditor-UnrealEd.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\AssetTools\UnrealEditor-AssetTools.lib"
+"..\Intermediate\Build\Win64\UnrealEditor\Development\ContentBrowser\UnrealEditor-ContentBrowser.lib"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"

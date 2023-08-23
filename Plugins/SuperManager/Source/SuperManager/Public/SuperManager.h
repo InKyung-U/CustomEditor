@@ -19,11 +19,17 @@ private:
 
 	void InitCBMenuExtention();
 
+	TArray<FString> FolderPathsSelected;
+
 	TSharedRef<FExtender> CustomCBMenuExtender(const TArray<FString>& SelectedPaths);
 
 	void AddCBMenuEntry(class FMenuBuilder& MenuBuilder);
 
 	void OnDeleteUnusedAssetButtonClicked();
+
+	void OnDeleteEmptyFoldersButtonClicked();
+
+	void FixUpRedirectors();
 
 #pragma endregion
 

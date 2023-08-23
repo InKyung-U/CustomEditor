@@ -26,7 +26,12 @@
             "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatamenucontexts.generated.h",
             "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatalegacybridge.generated.h",
             "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrufavoriteslist.h",
-            "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrulist.h"
+            "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrulist.h",
+            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\debugheader.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\slate\\public\\widgets\\notifications\\snotificationlist.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\slate\\public\\framework\\notifications\\notificationmanager.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\core\\public\\misc\\coreasynctasknotificationimpl.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\core\\public\\misc\\asynctasknotification.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

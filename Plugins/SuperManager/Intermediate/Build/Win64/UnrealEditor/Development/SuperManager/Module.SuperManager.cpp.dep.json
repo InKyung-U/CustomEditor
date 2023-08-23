@@ -257,7 +257,21 @@
             "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assettools\\uht\\iassettypeactions.generated.h",
             "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\automatedassetimportdata.h",
             "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\unrealed\\uht\\automatedassetimportdata.generated.h",
-            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assettools\\uht\\iassettools.generated.h"
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assettools\\uht\\iassettools.generated.h",
+            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\private\\supermanager.cpp",
+            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\supermanager.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowser\\public\\contentbrowsermodule.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowser\\public\\contentbrowserdelegates.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowserdatalegacybridge.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowserdatamenucontexts.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowseritem.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowseritemdata.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowseritem.generated.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatamenucontexts.generated.h",
+            "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatalegacybridge.generated.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrufavoriteslist.h",
+            "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrulist.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\assetregistry\\public\\assetregistrymodule.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
