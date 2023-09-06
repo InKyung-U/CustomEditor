@@ -7,13 +7,15 @@
 #include "ObjectTools.h"
 #include "AssetRegistryModule.h"
 #include "AssetToolsModule.h"
+#include <Widgets/Docking/SDockTab.h>
+#include "SlateWidgets/AdvanceDeletionWidget.h"
 
 #define LOCTEXT_NAMESPACE "FSuperManagerModule"
 
 void FSuperManagerModule::StartupModule()
 {
 	InitCBMenuExtention();
-
+	RegisterAdvancedDeletionTab();
 }
 
 #pragma region	ContentBrowserMenuWxtention
@@ -73,6 +75,15 @@ void FSuperManagerModule::AddCBMenuEntry(FMenuBuilder& MenuBuilder)
 		FSlateIcon(),	// Custom icon
 		// The actual funcion execute
 		FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnDeleteEmptyFoldersButtonClicked)
+	);
+
+	MenuBuilder.AddMenuEntry
+	(
+		FText::FromString(TEXT("Advanced Deletion")),						// Title text for menu entry
+		FText::FromString(TEXT("List assets by specific condition in a tab for deleting")),	// Tool tip text
+		FSlateIcon(),	// Custom icon
+		// The actual funcion execute
+		FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnAdvancedDeletionButtonClicked)
 	);
 }
 
@@ -205,6 +216,11 @@ void FSuperManagerModule::OnDeleteEmptyFoldersButtonClicked()
 	}
 }
 
+void FSuperManagerModule::OnAdvancedDeletionButtonClicked()
+{
+	FGlobalTabmanager::Get()->TryInvokeTab(FName("AdvancedDeletion"));
+}
+
 void FSuperManagerModule::FixUpRedirectors()
 {
 	TArray<UObjectRedirector*> RedirectorsToFixArray;
@@ -248,6 +264,54 @@ void FSuperManagerModule::FixUpRedirectors()
 
 #pragma endregion
 
+#pragma region	CustomEditorTab
+
+void FSuperManagerModule::RegisterAdvancedDeletionTab()
+{
+	FGlobalTabmanager::Get()->RegisterNomadTabSpawner(FName("AdvancedDeletion"),
+		FOnSpawnTab::CreateRaw(this, &FSuperManagerModule::OnSpawnAdvancedDeletionTab))
+		.SetDisplayName(FText::FromString(TEXT("AdvancedDeletion")));
+}
+
+TSharedRef<SDockTab> FSuperManagerModule::OnSpawnAdvancedDeletionTab(const FSpawnTabArgs& SpawnTabArgs)
+{
+	return SNew(SDockTab).TabRole(ETabRole::NomadTab)
+		[
+			SNew(SAdvanceDeletionTab)
+			.AssetsDataArray(GetAllAssetDataUnderSelectedFolder())
+		];
+}
+
+TArray<TSharedPtr<FAssetData>> FSuperManagerModule::GetAllAssetDataUnderSelectedFolder()
+{
+	TArray<TSharedPtr<FAssetData>> AvaliableAssetsData;
+
+	TArray<FString> AssetsPathNames = UEditorAssetLibrary::ListAssets(FolderPathsSelected[0]);
+
+	for (const auto& AssetPathName : AssetsPathNames)
+	{
+		// Do not touch root Folder!
+		// __ExternalActors__ 와 __ExternalObject__ 는 UE5 부터 추가된 파일.
+		// Developers, Collections 와 마찬가지로 건들 x
+		if (AssetPathName.Contains(TEXT("Developers")) ||
+			AssetPathName.Contains(TEXT("Collections")) ||
+			AssetPathName.Contains(TEXT("__ExternalActors__")) ||
+			AssetPathName.Contains(TEXT("__ExternalObject__")))
+		{
+			continue;
+		}
+
+		if (!UEditorAssetLibrary::DoesAssetExist(AssetPathName)) continue;
+
+		const FAssetData Data =	UEditorAssetLibrary::FindAssetData(AssetPathName);
+		
+		AvaliableAssetsData.Add(MakeShared<FAssetData>(Data));
+	}
+	return AvaliableAssetsData;
+}
+
+
+#pragma endregion
 
 void FSuperManagerModule::ShutdownModule()
 {
