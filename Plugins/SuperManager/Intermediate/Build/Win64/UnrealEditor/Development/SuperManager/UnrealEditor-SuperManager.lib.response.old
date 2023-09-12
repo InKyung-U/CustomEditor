@@ -9,5 +9,8 @@
 "D:\Unreal_Project\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.obj"
 "D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Module.SuperManager.cpp.obj"
 "D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\SuperManager.cpp.obj"
+"D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\AdvanceDeletionWidget.cpp.obj"
+"D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\QuickAssetAction.gen.cpp.obj"
+"D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\SuperManager.init.gen.cpp.obj"
 "D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Default.rc2.res"
 /OUT:"D:\Unreal_Project\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\UnrealEditor-SuperManager.lib"

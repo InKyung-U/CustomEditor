@@ -50,6 +50,7 @@
 "..\Intermediate\Build\Win64\UnrealEditor\Development\UnrealEd\UnrealEditor-UnrealEd.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\AssetTools\UnrealEditor-AssetTools.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\ContentBrowser\UnrealEditor-ContentBrowser.lib"
+"..\Intermediate\Build\Win64\UnrealEditor\Development\InputCore\UnrealEditor-InputCore.lib"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"

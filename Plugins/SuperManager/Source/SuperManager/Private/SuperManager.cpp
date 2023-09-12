@@ -269,16 +269,17 @@ void FSuperManagerModule::FixUpRedirectors()
 void FSuperManagerModule::RegisterAdvancedDeletionTab()
 {
 	FGlobalTabmanager::Get()->RegisterNomadTabSpawner(FName("AdvancedDeletion"),
-		FOnSpawnTab::CreateRaw(this, &FSuperManagerModule::OnSpawnAdvancedDeletionTab))
+		FOnSpawnTab::CreateRaw(this, &FSuperManagerModule::OnSpawnAdvanceDeletionTab))
 		.SetDisplayName(FText::FromString(TEXT("AdvancedDeletion")));
 }
 
-TSharedRef<SDockTab> FSuperManagerModule::OnSpawnAdvancedDeletionTab(const FSpawnTabArgs& SpawnTabArgs)
+TSharedRef<SDockTab> FSuperManagerModule::OnSpawnAdvanceDeletionTab(const FSpawnTabArgs& SpawnTabArgs)
 {
-	return SNew(SDockTab).TabRole(ETabRole::NomadTab)
+	return
+	SNew(SDockTab).TabRole(ETabRole::NomadTab)
 		[
 			SNew(SAdvanceDeletionTab)
-			.AssetsDataArray(GetAllAssetDataUnderSelectedFolder())
+			.AssetsDataToStore(GetAllAssetDataUnderSelectedFolder())
 		];
 }
 
@@ -310,6 +311,21 @@ TArray<TSharedPtr<FAssetData>> FSuperManagerModule::GetAllAssetDataUnderSelected
 	return AvaliableAssetsData;
 }
 
+#pragma endregion
+
+
+#pragma region ProcessDataForAdvanceDeletionTab
+
+bool FSuperManagerModule::DeleteSingleAssetForAssetList(const FAssetData& AssetDataToDelete)
+{
+	TArray<FAssetData> AssetDataForDeletion;
+	AssetDataForDeletion.Add(AssetDataToDelete);
+
+	if (ObjectTools::DeleteAssets(AssetDataForDeletion) > 0)
+		return true;
+	
+	return false;
+}
 
 #pragma endregion
 
