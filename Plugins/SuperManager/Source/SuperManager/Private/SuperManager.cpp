@@ -327,6 +327,31 @@ bool FSuperManagerModule::DeleteSingleAssetForAssetList(const FAssetData& AssetD
 	return false;
 }
 
+bool FSuperManagerModule::DeleteMutipleAssetsForAssetList(const TArray<FAssetData>& AssetsToDelete)
+{
+	if (ObjectTools::DeleteAssets(AssetsToDelete) > 0)
+		return true;
+
+	return false;
+}
+
+void FSuperManagerModule::ListUnusedAssetsForAssetList(
+	const TArray<TSharedPtr<FAssetData>>& AssetsDataToFilter, TArray<TSharedPtr<FAssetData>>& OutUnusedAssetsData)
+{
+	OutUnusedAssetsData.Empty();
+
+	for (const auto& DataSharedPtr : AssetsDataToFilter)
+	{
+		TArray<FString> AssetReferencers = 
+			UEditorAssetLibrary::FindPackageReferencersForAsset(DataSharedPtr->ObjectPath.ToString());
+
+		if (AssetReferencers.Num() == 0)
+		{
+			OutUnusedAssetsData.Add(DataSharedPtr);
+		}
+	}
+}
+
 #pragma endregion
 
 void FSuperManagerModule::ShutdownModule()
