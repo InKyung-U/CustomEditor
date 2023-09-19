@@ -8,6 +8,7 @@
 
 #define ListAll TEXT("List All Available Assets")
 #define ListUnused TEXT("List Unused Assets")
+#define ListSameName TEXT("List Assets with Same Name")
 
 void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 {
@@ -18,11 +19,13 @@ void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 
 	CheckBoxesArray.Empty();
 	AssetsDataToDeleteArray.Empty();
+	ComboBoxSourceItems.Empty();
 
 	ComboBoxSourceItems.Add(MakeShared<FString>(ListAll));
 	ComboBoxSourceItems.Add(MakeShared<FString>(ListUnused));
+	ComboBoxSourceItems.Add(MakeShared<FString>(ListSameName));
 
-	FSlateFontInfo TitleTextFont = FCoreStyle::Get().GetFontStyle(FName("EmbossedText"));
+	FSlateFontInfo TitleTextFont = GetEmbossedTextFont();
 	TitleTextFont.Size = 30;
 
 	ChildSlot
@@ -51,6 +54,24 @@ void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 			.AutoWidth()
 			[
 				ConstructComboBox()
+			]
+
+			// Help Text for combo box
+			+ SHorizontalBox::Slot()
+			.FillWidth(.6f)
+			[
+				ConstructComboHelpTexts(
+					TEXT("Specify the listing condition in the drop down. Left mouse click to go to where asset is located"),
+					ETextJustify::Center)
+			]
+
+			// Help Text for folder path
+			+ SHorizontalBox::Slot()
+			.FillWidth(.1f)
+			[
+				ConstructComboHelpTexts(
+					TEXT("Current Folder : \n") + InArgs._CurrentSelectedFolder,
+					ETextJustify::Right)
 			]
 		]
 
@@ -107,13 +128,15 @@ TSharedRef<SListView<TSharedPtr<FAssetData>>> SAdvanceDeletionTab::ConstructAsse
 		SNew(SListView<TSharedPtr<FAssetData>>)
 		.ItemHeight(24.f)
 		.ListItemsSource(&DisplayedAssetsData)
-		.OnGenerateRow(this, &SAdvanceDeletionTab::OnGenerateRowForList);
+		.OnGenerateRow(this, &SAdvanceDeletionTab::OnGenerateRowForList)
+		.OnMouseButtonClick(this, &SAdvanceDeletionTab::OnRowWidgetMouseButtonClicked);
 
 	return ConstructedAssetListView.ToSharedRef();
 }
 
 void SAdvanceDeletionTab::RefreshAssetListView()
 {
+	CheckBoxesArray.Empty();
 	AssetsDataToDeleteArray.Empty();
 
 	if (ConstructedAssetListView.IsValid())
@@ -161,6 +184,8 @@ void SAdvanceDeletionTab::OnComboSelectionChanged(TSharedPtr<FString> SelectedOp
 	if (*SelectedOption.Get() == ListAll)
 	{
 		// List all sotred asset data
+		DisplayedAssetsData = StoreAssetsData;
+		RefreshAssetListView();
 	}
 	else if (*SelectedOption.Get() == ListUnused)
 	{
@@ -168,8 +193,24 @@ void SAdvanceDeletionTab::OnComboSelectionChanged(TSharedPtr<FString> SelectedOp
 		SuperManagerModule.ListUnusedAssetsForAssetList(StoreAssetsData, DisplayedAssetsData);
 		RefreshAssetListView();
 	}
+	else if (*SelectedOption.Get() == ListSameName)
+	{
+		// List out all assets same name
+		SuperManagerModule.ListSameNameAssetsForAssetList(StoreAssetsData, DisplayedAssetsData);
+		RefreshAssetListView();
+	}
+}
 
+TSharedRef<STextBlock> SAdvanceDeletionTab::ConstructComboHelpTexts(
+	const FString& TextContent, ETextJustify::Type TextJustify)
+{
+	TSharedRef<STextBlock> ConstructedHelpText = 
+		SNew(STextBlock)
+		.Text(FText::FromString(TextContent))
+		.Justification(TextJustify)
+		.AutoWrapText(true);
 
+	return ConstructedHelpText;
 }
 
 #pragma endregion
@@ -183,7 +224,7 @@ TSharedRef<ITableRow> SAdvanceDeletionTab::OnGenerateRowForList(
 		return SNew(STableRow<TSharedPtr<FAssetData>>, OwnerTable);
 
 	const FString ClassName = AssetDataToDisplay->GetClass()->GetName();
-	const FString ClassName2 = AssetDataToDisplay->GetAsset()->GetClass()->GetName();
+
 	const FString DisplayAssetClassName = AssetDataToDisplay->AssetClass.ToString();
 	const FString DisplayAssetName = AssetDataToDisplay->AssetName.ToString();
 
@@ -214,7 +255,7 @@ TSharedRef<ITableRow> SAdvanceDeletionTab::OnGenerateRowForList(
 			.VAlign(VAlign_Fill)
 			.FillWidth(0.5f)
 			[
-				ConstructTextForRowWidget(ClassName2, AssetClassNameFont)
+				ConstructTextForRowWidget(ClassName, AssetClassNameFont)
 			]
 			
 			// 3. 실제 에셋 이름
@@ -237,6 +278,15 @@ TSharedRef<ITableRow> SAdvanceDeletionTab::OnGenerateRowForList(
 		];
 
 	return ListViewRowWidget;
+}
+
+void SAdvanceDeletionTab::OnRowWidgetMouseButtonClicked(TSharedPtr<FAssetData> ClickedData)
+{
+	FSuperManagerModule& SuperManagerModule =
+		FModuleManager::LoadModuleChecked<FSuperManagerModule>(TEXT("SuperManager"));
+
+
+	SuperManagerModule.SyncCBToClickedAssetForAssetList(ClickedData->ObjectPath.ToString());
 }
 
 TSharedRef<SCheckBox> SAdvanceDeletionTab::ConstructCheckBox(const TSharedPtr<FAssetData>& AssetDataToDisplay)
@@ -311,6 +361,12 @@ FReply SAdvanceDeletionTab::OnDeleteButtonClicked(TSharedPtr<FAssetData> Clicked
 		{
 			StoreAssetsData.Remove(ClickedAssetData);
 		}
+
+		if(DisplayedAssetsData.Contains(ClickedAssetData))
+		{
+			DisplayedAssetsData.Remove(ClickedAssetData);
+		}
+
 		// Refresh the list
 		RefreshAssetListView();
 	}
@@ -360,9 +416,15 @@ FReply SAdvanceDeletionTab::OnDeleteAllButtonClicked()
 	{
 		for (const auto& DeletedData : AssetsDataToDeleteArray)
 		{
+			// 저장 데이터 업데이트
 			if (StoreAssetsData.Contains(DeletedData))
 			{
 				StoreAssetsData.Remove(DeletedData);
+			}
+
+			if (DisplayedAssetsData.Contains(DeletedData))
+			{
+				DisplayedAssetsData.Remove(DeletedData);
 			}
 		}
 		RefreshAssetListView();

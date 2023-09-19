@@ -218,6 +218,8 @@ void FSuperManagerModule::OnDeleteEmptyFoldersButtonClicked()
 
 void FSuperManagerModule::OnAdvancedDeletionButtonClicked()
 {
+	FixUpRedirectors();
+
 	FGlobalTabmanager::Get()->TryInvokeTab(FName("AdvancedDeletion"));
 }
 
@@ -280,6 +282,7 @@ TSharedRef<SDockTab> FSuperManagerModule::OnSpawnAdvanceDeletionTab(const FSpawn
 		[
 			SNew(SAdvanceDeletionTab)
 			.AssetsDataToStore(GetAllAssetDataUnderSelectedFolder())
+			.CurrentSelectedFolder(FolderPathsSelected[0])
 		];
 }
 
@@ -352,12 +355,51 @@ void FSuperManagerModule::ListUnusedAssetsForAssetList(
 	}
 }
 
+void FSuperManagerModule::ListSameNameAssetsForAssetList(
+	const TArray<TSharedPtr<FAssetData>>& AssetsDataToFilter, TArray<TSharedPtr<FAssetData>>& OutSameNameAssetsData)
+{
+	OutSameNameAssetsData.Empty();
+
+	// Multimap for supportion finding assets with same name
+	TMultiMap<FString, TSharedPtr<FAssetData>> AssetsInfoMap;
+
+	for (const auto& DataSharedPtr : AssetsDataToFilter)
+	{
+		AssetsInfoMap.Emplace(DataSharedPtr->AssetName.ToString(), DataSharedPtr);
+	}
+
+	for (const auto& DataSharedPtr : AssetsDataToFilter)
+	{
+		TArray<TSharedPtr<FAssetData>> OutAssetsData;
+		AssetsInfoMap.MultiFind(DataSharedPtr->AssetName.ToString(), OutAssetsData);
+
+		if (OutAssetsData.Num() <= 1) continue;
+
+		for (const auto& SameNameData : OutAssetsData)
+		{
+			if (SameNameData.IsValid())
+			{
+				OutSameNameAssetsData.AddUnique(SameNameData);
+			}
+		}
+	}
+}
+
+void FSuperManagerModule::SyncCBToClickedAssetForAssetList(const FString& AssetPathToSync)
+{
+	TArray<FString> AssetsPathToSync;
+	AssetsPathToSync.Add(AssetPathToSync);
+	UEditorAssetLibrary::SyncBrowserToObjects(AssetsPathToSync);
+}
+
 #pragma endregion
 
 void FSuperManagerModule::ShutdownModule()
 {
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.
+
+	FGlobalTabmanager::Get()->UnregisterNomadTabSpawner(FName("AdvancedDeletion"));
 }
 
 #undef LOCTEXT_NAMESPACE

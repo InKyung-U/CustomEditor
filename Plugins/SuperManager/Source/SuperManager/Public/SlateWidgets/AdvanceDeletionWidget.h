@@ -10,6 +10,8 @@ class SAdvanceDeletionTab : public SCompoundWidget
 
 	SLATE_ARGUMENT(TArray<TSharedPtr<FAssetData>>, AssetsDataToStore)
 
+	SLATE_ARGUMENT(FString, CurrentSelectedFolder)
+
 	SLATE_END_ARGS()
 
 public:
@@ -35,12 +37,16 @@ private:
 
 	TSharedPtr<STextBlock> ComboDisplayTextBlock;
 
+	TSharedRef<STextBlock> ConstructComboHelpTexts(const FString& TextContent, ETextJustify::Type TextJustify);
 #pragma endregion
 
 
 #pragma region RowWidgetForAssetListView
 
 	TSharedRef<ITableRow> OnGenerateRowForList(TSharedPtr<FAssetData> AssetDataToDisplay, const TSharedRef<STableViewBase>& OwnerTable);
+	
+	void OnRowWidgetMouseButtonClicked(TSharedPtr<FAssetData> ClickedData);
+
 	TSharedRef<SCheckBox> ConstructCheckBox(const TSharedPtr<FAssetData>& AssetDataToDisplay);
 	void OnCheckBoxStateChanged(ECheckBoxState NewState, TSharedPtr<FAssetData> AssetData);
 	TSharedRef<STextBlock> ConstructTextForRowWidget(const FString& TextContent, const FSlateFontInfo& FontToUse);
