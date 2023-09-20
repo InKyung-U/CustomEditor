@@ -9,11 +9,13 @@
 #include "AssetToolsModule.h"
 #include <Widgets/Docking/SDockTab.h>
 #include "SlateWidgets/AdvanceDeletionWidget.h"
+#include "CustomStyle/SuperManagerStyle.h"
 
 #define LOCTEXT_NAMESPACE "FSuperManagerModule"
 
 void FSuperManagerModule::StartupModule()
 {
+	FSuperManagerStyle::InitializeIcons();
 	InitCBMenuExtention();
 	RegisterAdvancedDeletionTab();
 }
@@ -63,7 +65,7 @@ void FSuperManagerModule::AddCBMenuEntry(FMenuBuilder& MenuBuilder)
 	MenuBuilder.AddMenuEntry(
 		FText::FromString(TEXT("Delete Unused Assets")),						// Title text for menu entry
 		FText::FromString(TEXT("Safty delete all unused assets under folder")),	// Tool tip text
-		FSlateIcon(),	// Custom icon
+		FSlateIcon(FSuperManagerStyle::GetStyleSetName(), "ConteneBrowser.DeleteUnusedAssets"),	// Custom icon
 		// The actual funcion execute
 		FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnDeleteUnusedAssetButtonClicked)
 	);
@@ -72,7 +74,7 @@ void FSuperManagerModule::AddCBMenuEntry(FMenuBuilder& MenuBuilder)
 	(
 		FText::FromString(TEXT("Delete Empty Folder")),						// Title text for menu entry
 		FText::FromString(TEXT("Safty delete all empty folders")),	// Tool tip text
-		FSlateIcon(),	// Custom icon
+		FSlateIcon(FSuperManagerStyle::GetStyleSetName(), "ConteneBrowser.DeleteEmptyFolder"),	// Custom icon
 		// The actual funcion execute
 		FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnDeleteEmptyFoldersButtonClicked)
 	);
@@ -81,7 +83,7 @@ void FSuperManagerModule::AddCBMenuEntry(FMenuBuilder& MenuBuilder)
 	(
 		FText::FromString(TEXT("Advanced Deletion")),						// Title text for menu entry
 		FText::FromString(TEXT("List assets by specific condition in a tab for deleting")),	// Tool tip text
-		FSlateIcon(),	// Custom icon
+		FSlateIcon(FSuperManagerStyle::GetStyleSetName(), "ConteneBrowser.AdvancedDeletion"),	// Custom icon
 		// The actual funcion execute
 		FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnAdvancedDeletionButtonClicked)
 	);
@@ -272,7 +274,8 @@ void FSuperManagerModule::RegisterAdvancedDeletionTab()
 {
 	FGlobalTabmanager::Get()->RegisterNomadTabSpawner(FName("AdvancedDeletion"),
 		FOnSpawnTab::CreateRaw(this, &FSuperManagerModule::OnSpawnAdvanceDeletionTab))
-		.SetDisplayName(FText::FromString(TEXT("AdvancedDeletion")));
+		.SetDisplayName(FText::FromString(TEXT("AdvancedDeletion")))
+		.SetIcon(FSlateIcon(FSuperManagerStyle::GetStyleSetName(), "ConteneBrowser.AdvancedDeletion"));
 }
 
 TSharedRef<SDockTab> FSuperManagerModule::OnSpawnAdvanceDeletionTab(const FSpawnTabArgs& SpawnTabArgs)
@@ -400,6 +403,7 @@ void FSuperManagerModule::ShutdownModule()
 	// we call this function before unloading the module.
 
 	FGlobalTabmanager::Get()->UnregisterNomadTabSpawner(FName("AdvancedDeletion"));
+	FSuperManagerStyle::ShutDown();
 }
 
 #undef LOCTEXT_NAMESPACE

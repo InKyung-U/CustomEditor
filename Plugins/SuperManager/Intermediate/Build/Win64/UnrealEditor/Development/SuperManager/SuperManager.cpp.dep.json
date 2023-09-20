@@ -46,7 +46,14 @@
             "d:\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\automatedassetimportdata.h",
             "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\unrealed\\uht\\automatedassetimportdata.generated.h",
             "d:\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assettools\\uht\\iassettools.generated.h",
-            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\slatewidgets\\advancedeletionwidget.h"
+            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\slatewidgets\\advancedeletionwidget.h",
+            "d:\\unreal_project\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\customstyle\\supermanagerstyle.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\styling\\slatestyle.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\brushes\\slateborderbrush.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\brushes\\slateboxbrush.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\brushes\\slatecolorbrush.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\brushes\\slateroundedboxbrush.h",
+            "d:\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\brushes\\slateimagebrush.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -6,6 +6,7 @@
 			"SuperManager.init.gen.cpp.obj",
 			"QuickAssetAction.cpp.obj",
 			"AdvanceDeletionWidget.cpp.obj",
+			"SuperManagerStyle.cpp.obj",
 			"SuperManager.cpp.obj"
 		]
 	}
