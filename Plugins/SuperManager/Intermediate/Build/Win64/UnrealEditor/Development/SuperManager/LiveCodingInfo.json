@@ -1,15 +1,5 @@
 {
 	"RemapUnityFiles": 
 	{
-		"Module.SuperManager.cpp.obj": [
-			"QuickAssetAction.gen.cpp.obj",
-			"QuickMaterialCreationWidget.gen.cpp.obj",
-			"QuickAssetAction.cpp.obj",
-			"SuperManagerStyle.cpp.obj",
-			"AdvanceDeletionWidget.cpp.obj",
-			"SuperManager.cpp.obj",
-			"SuperManager.init.gen.cpp.obj",
-			"QuickMaterialCreationWidget.cpp.obj"
-		]
 	}
 }
